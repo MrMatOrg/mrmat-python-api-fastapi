@@ -76,7 +76,7 @@ jobs:
         PYTHONPATH=${GITHUB_WORKSPACE} python -m pytest --cov=mrmat_python_api_fastapi
         PYTHONPATH=${GITHUB_WORKSPACE} python -m build --wheel -n
         # Hack to make Azure install our locally produced wheel
-        echo "/tmp/zipdeploy/extracted/mrmat_python_api_fastapi-${MRMAT_VERSION}.dev0-py3-none-any.whl" > dist/requirements.txt
+        echo "/tmp/zipdeploy/extracted/mrmat_python_api_fastapi-${MRMAT_VERSION}-py3-none-any.whl" > dist/requirements.txt
 
     - name: Upload test results
       uses: actions/upload-artifact@v2
