@@ -24,6 +24,7 @@
 Blueprint for the Greeting API in V2
 """
 
+from typing import Optional
 from fastapi import APIRouter
 from mrmat_python_api_fastapi.apis.greeting.v2 import GreetingV2Output
 
@@ -35,5 +36,5 @@ router = APIRouter()
             name='get_greeting_v2',
             description='Get a greeting for a given name',
             response_description='A JSON-encoded greeting for the provided name')
-async def get_greeting(name: str | None = 'Stranger'):
+async def get_greeting(name: Optional[str] = 'Stranger'):
     return GreetingV2Output(message=f'Hello {name}')
