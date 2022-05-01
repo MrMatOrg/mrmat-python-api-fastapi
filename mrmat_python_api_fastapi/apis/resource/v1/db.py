@@ -1,6 +1,6 @@
 #  MIT License
 #
-#  Copyright (c) 2022 MrMat
+#  Copyright (c) 2022 Mathieu Imfeld
 #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy
 #  of this software and associated documentation files (the "Software"), to deal
@@ -20,16 +20,27 @@
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #  SOFTWARE.
 
-from .config import Config
-app_config = Config.from_json_file()
+from sqlalchemy import ForeignKey, Column, Integer, String, UniqueConstraint, BigInteger
+from sqlalchemy.orm import relationship
 
-from sqlalchemy.ext.declarative import declarative_base                     # pylint: disable=wrong-import-position
-Base = declarative_base()
-
-from mrmat_python_api_fastapi.apis.healthz import api_healthz               # pylint: disable=wrong-import-position
-from mrmat_python_api_fastapi.apis.greeting.v1 import api_greeting_v1       # pylint: disable=wrong-import-position
-from mrmat_python_api_fastapi.apis.greeting.v2 import api_greeting_v2       # pylint: disable=wrong-import-position
-from mrmat_python_api_fastapi.apis.greeting.v3 import api_greeting_v3       # pylint: disable=wrong-import-position
-from mrmat_python_api_fastapi.apis.resource.v1 import api_resource_v1       # pylint: disable=wrong-import-position
+from mrmat_python_api_fastapi import Base
 
 
+class Owner(Base):
+    __tablename__ = 'owners'
+    __schema__ = 'mrmat-python-api-fastapi'
+    id = Column(BigInteger().with_variant(Integer, 'sqlite'), primary_key=True)
+    client_id = Column(String(255), nullable=False, unique=True)
+    name = Column(String(255), nullable=False)
+    resources = relationship('Resource', back_populates='owner')
+
+
+class Resource(Base):
+    __tablename__ = 'resources'
+    __schema__ = 'mrmat-python-api-fastapi'
+    id = Column(BigInteger().with_variant(Integer, 'sqlite'), primary_key=True)
+    owner_id = Column(Integer, ForeignKey('owners.id'), nullable=False)
+    name = Column(String(255), nullable=False)
+
+    owner = relationship('Owner', back_populates='resources')
+    UniqueConstraint('owner_id', 'name', name='no_duplicate_names_per_owner')

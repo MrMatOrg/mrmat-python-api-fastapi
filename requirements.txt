@@ -17,4 +17,8 @@ python-keycloak~=0.27.0  # MIT
 
 uvicorn~=0.17.6          # BSD
 fastapi~=0.75.0          # MIT
+fastapi_utils=~0.2.1     # MIT
 pydantic~=1.9.0          # MIT
+sqlalchemy~=1.4.36       # MIT
+alembic~=1.7.7           # MIT
+psycopg2-binary~=2.9.3   # LGPL with exceptions

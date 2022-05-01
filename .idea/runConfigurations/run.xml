@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="run" type="Python.FastAPI">
-    <option name="file" value="C:\Users\imfeldma\Projects\mrmat-python-api-fastapi\mrmat_python_api_fastapi\cui.py" />
+    <option name="file" value="C:\Users\imfeldma\Projects\mrmat-python-api-fastapi\mrmat_python_api_fastapi\app.py" />
     <module name="mrmat-python-api-fastapi" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />

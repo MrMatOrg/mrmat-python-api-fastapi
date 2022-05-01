@@ -1,6 +1,6 @@
 #  MIT License
 #
-#  Copyright (c) 2022 MrMat
+#  Copyright (c) 2022 Mathieu Imfeld
 #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy
 #  of this software and associated documentation files (the "Software"), to deal
@@ -20,16 +20,25 @@
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #  SOFTWARE.
 
-from .config import Config
-app_config = Config.from_json_file()
+from fastapi import FastAPI
 
-from sqlalchemy.ext.declarative import declarative_base                     # pylint: disable=wrong-import-position
-Base = declarative_base()
+from mrmat_python_api_fastapi import (
+    app_config,
+    api_healthz,
+    api_greeting_v1,
+    api_greeting_v2,
+    api_greeting_v3,
+    api_resource_v1
+)
 
-from mrmat_python_api_fastapi.apis.healthz import api_healthz               # pylint: disable=wrong-import-position
-from mrmat_python_api_fastapi.apis.greeting.v1 import api_greeting_v1       # pylint: disable=wrong-import-position
-from mrmat_python_api_fastapi.apis.greeting.v2 import api_greeting_v2       # pylint: disable=wrong-import-position
-from mrmat_python_api_fastapi.apis.greeting.v3 import api_greeting_v3       # pylint: disable=wrong-import-position
-from mrmat_python_api_fastapi.apis.resource.v1 import api_resource_v1       # pylint: disable=wrong-import-position
+app = FastAPI(title='MrMat :: Python :: API :: FastAPI')
+app.include_router(api_healthz, prefix='/healthz', tags=['health'])
+app.include_router(api_greeting_v1, prefix='/api/greeting/v1', tags=['greeting'])
+app.include_router(api_greeting_v2, prefix='/api/greeting/v2', tags=['greeting'])
+app.include_router(api_greeting_v3, prefix='/api/greeting/v3', tags=['greeting'])
+app.include_router(api_resource_v1, prefix='/api/resource/v1', tags=['resource'])
 
 
+@app.get('/')
+def index():
+    return {'Hello': f'World (Using db {app_config.db_url}'}
