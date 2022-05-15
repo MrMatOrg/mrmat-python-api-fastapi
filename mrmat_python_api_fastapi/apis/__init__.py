@@ -19,3 +19,13 @@
 #  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #  SOFTWARE.
+
+from pydantic import BaseModel
+
+
+class StatusSchema(BaseModel):
+    """
+    A generic message class
+    """
+    code: int
+    msg: str

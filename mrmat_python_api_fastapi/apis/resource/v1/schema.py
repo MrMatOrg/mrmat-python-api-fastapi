@@ -23,16 +23,22 @@
 from pydantic import BaseModel
 
 
-class OwnerSchema(BaseModel):
-    id: int
+class OwnerInputSchema(BaseModel):
     name: str
+
+
+class OwnerSchema(OwnerInputSchema):
+    id: int
 
     class Config:
         orm_mode = True
 
 
-class ResourceSchema(BaseModel):
-    id: int
+class ResourceInputSchema(BaseModel):
+    name: str
+
+
+class ResourceSchema(ResourceInputSchema):
     name: str
 
     class Config:

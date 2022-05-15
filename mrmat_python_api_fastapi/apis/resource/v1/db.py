@@ -21,7 +21,7 @@
 #  SOFTWARE.
 
 from sqlalchemy import ForeignKey, Column, Integer, String, UniqueConstraint, BigInteger
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, Session
 
 from mrmat_python_api_fastapi import Base
 

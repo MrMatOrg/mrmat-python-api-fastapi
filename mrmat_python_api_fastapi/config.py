@@ -27,6 +27,9 @@ import secrets
 
 
 class Config:
+    """
+    A class to deal with application configuration
+    """
     secret_key: str = secrets.token_urlsafe(16)
     db_url: str = 'sqlite://'
 
@@ -34,7 +37,7 @@ class Config:
     def from_json_file(file: Optional[os.PathLike] = os.getenv('APP_CONFIG')):
         runtime_config = Config()
         if file and os.path.exists(file):
-            with open(file, 'r') as c:
+            with open(file, 'r', encoding='UTF-8') as c:
                 file_config = json.load(c)
             runtime_config.secret_key = file_config.get('secret_key', secrets.token_urlsafe(16))
             runtime_config.db_url = file_config.get('db_url', 'sqlite://')
