@@ -1,9 +1,12 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="run" type="Python.FastAPI">
+  <configuration default="false" name="backend run (prometheus infra)" type="Python.FastAPI">
     <option name="file" value="C:\Users\imfeldma\Projects\mrmat-python-api-fastapi\mrmat_python_api_fastapi\app.py" />
     <module name="mrmat-python-api-fastapi" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
+    <envs>
+      <env name="APP_CONFIG" value="c:\users\imfeldma\etc\mrmat-python-api-fastapi.json" />
+    </envs>
     <option name="SDK_HOME" value="C:\Users\imfeldma\var\venv\mrmat-python-api-fastapi\Scripts\python.exe" />
     <option name="WORKING_DIRECTORY" value="" />
     <option name="IS_MODULE_SDK" value="false" />
