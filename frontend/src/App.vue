@@ -1,53 +1,30 @@
-<script setup>
+<script>
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "@/components/HelloWorld.vue";
-
-import { useAuthStore} from "@/stores/auth";
+import HomeComponent from "@/components/HomeComponent.vue"
 
 export default {
   name: 'App',
-  setup: {
-
-  }
-  computed: {
-    isLoggedIn: function() { return }
-  }
+  components: { HomeComponent },
 }
-  setup() {
-    const authInfo = useAuthStore()
-    return { authInfo }
-  },
 
-
-export default {
-  name: 'App',
-  computed: {
-    isLoggedIn: function() { return this.$store.getters.isLoggedIn }
-  },
-  methods: {
-    async logout() {
-      await this.$store.dispatch('Logout')
-      this.$router.push('/login')
-    }
-  }
-}
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <HelloWorld msg="MrMat :: Python :: API :: FastAPI" />
+      <HomeComponent/>
+<!--      <HelloWorld msg="MrMat :: Python :: API :: FastAPI" />-->
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-        <span v-if="isLoggedIn">
-          <RouterLink to="/login"> to="/login">Login</RouterLink>
-        </span>
-        <span v-else>
-          <RouterLink to="/protected">Protected</RouterLink>
-          <RouterLink to="/logout">Logout</RouterLink>
-        </span>
+<!--        <span v-if="isLoggedIn">-->
+<!--          <RouterLink to="/login"> to="/login">Login</RouterLink>-->
+<!--        </span>-->
+<!--        <span v-else>-->
+<!--          <RouterLink to="/protected">Protected</RouterLink>-->
+<!--          <RouterLink to="/logout">Logout</RouterLink>-->
+<!--        </span>-->
       </nav>
     </div>
   </header>

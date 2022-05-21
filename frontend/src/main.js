@@ -9,4 +9,7 @@ const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 
+app.config.errorHandler = (err) => {
+    console.log(err)
+};
 app.mount("#app");

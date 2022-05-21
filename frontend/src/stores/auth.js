@@ -14,14 +14,14 @@ export const useAuthStore = defineStore({
     user: null,
   }),
   getters: {
-    doubleCount: (state) => state.counter * 2,
-    info: (state) => state.keycloak,
+    loggedIn: (state) => state.loggedIn,
+    user: (state) => state.user
   },
   actions: {
     login() {
       this.keycloak = new Keycloak(initOptions);
       this.keycloak.init({ onLoad: 'login-required'}).then( (auth) => {
-        if (!auth) {
+        if (! auth) {
           window.location.reload();
         } else {
           console.log('Authenticated!')
