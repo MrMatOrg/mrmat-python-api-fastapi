@@ -1,30 +1,18 @@
-<script>
-import { RouterLink, RouterView } from "vue-router";
-import HomeComponent from "@/components/HomeComponent.vue"
-
-export default {
-  name: 'App',
-  components: { HomeComponent },
-}
-
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+import HelloWorld from '@/components/HelloWorld.vue'
 </script>
 
 <template>
   <header>
+    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+
     <div class="wrapper">
-      <HomeComponent/>
-<!--      <HelloWorld msg="MrMat :: Python :: API :: FastAPI" />-->
+      <HelloWorld msg="You did it!" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-<!--        <span v-if="isLoggedIn">-->
-<!--          <RouterLink to="/login"> to="/login">Login</RouterLink>-->
-<!--        </span>-->
-<!--        <span v-else>-->
-<!--          <RouterLink to="/protected">Protected</RouterLink>-->
-<!--          <RouterLink to="/logout">Logout</RouterLink>-->
-<!--        </span>-->
       </nav>
     </div>
   </header>
@@ -33,7 +21,7 @@ export default {
 </template>
 
 <style>
-@import "@/assets/base.css";
+@import '@/assets/base.css';
 
 #app {
   max-width: 1280px;
