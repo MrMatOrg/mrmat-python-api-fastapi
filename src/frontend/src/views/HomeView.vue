@@ -1,9 +1,6 @@
 <script setup>
-import TheWelcome from '@/components/TheWelcome.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <h1 class="ui header">A demonstration of a frontend for MrMat :: Python API :: FastAPI</h1>
 </template>
