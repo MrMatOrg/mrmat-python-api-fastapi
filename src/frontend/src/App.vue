@@ -35,5 +35,6 @@ main > aside > div {
 
 main > div {
   margin: 14px 10px 0 14px;
+  width: 100%;
 }
 </style>
